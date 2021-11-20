@@ -6,9 +6,33 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>573</width>
+    <width>622</width>
     <height>446</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>622</width>
+    <height>446</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>622</width>
+    <height>446</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>622</width>
+    <height>446</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Печать</string>
@@ -48,10 +72,10 @@
   <widget class="QPushButton" name="ButtonPrint">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>370</y>
-     <width>111</width>
-     <height>51</height>
+     <x>360</x>
+     <y>190</y>
+     <width>161</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="font">
@@ -73,7 +97,7 @@
     <rect>
      <x>280</x>
      <y>30</y>
-     <width>281</width>
+     <width>341</width>
      <height>41</height>
     </rect>
    </property>
@@ -94,7 +118,7 @@
   <widget class="QLineEdit" name="lineEdit_start">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>350</x>
      <y>80</y>
      <width>181</width>
      <height>31</height>
@@ -104,7 +128,7 @@
   <widget class="QLineEdit" name="lineEdit_end">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>350</x>
      <y>120</y>
      <width>181</width>
      <height>31</height>
@@ -137,7 +161,7 @@
     <rect>
      <x>310</x>
      <y>120</y>
-     <width>20</width>
+     <width>31</width>
      <height>31</height>
     </rect>
    </property>
@@ -152,26 +176,14 @@
     <string>ПО</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_status">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>230</y>
-     <width>231</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
+  <zorder>ButtonAdd</zorder>
+  <zorder>listWidget</zorder>
+  <zorder>label</zorder>
+  <zorder>lineEdit_start</zorder>
+  <zorder>lineEdit_end</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>ButtonPrint</zorder>
  </widget>
  <resources>
   <include location="../../Downloads/1.qrc"/>
