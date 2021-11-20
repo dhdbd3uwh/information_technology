@@ -21,7 +21,7 @@ def Create_SQL_Table ():
     '''
     with con:
         cur = con.cursor()
-        sql = "CREATE TABLE cadet(id int AUTO_INCREMENT, name VARCHAR(30), PRIMARY KEY(id))"
+        sql = "CREATE TABLE cadet_print(id int AUTO_INCREMENT, name VARCHAR(30), PRIMARY KEY(id))"
         cur.execute(sql)
         con.commit()  
         print('table created')
@@ -32,7 +32,7 @@ def Delete_SQL_Table ():
     '''
     with con:
         cur = con.cursor()
-        sql = "DROP TABLE cadet"
+        sql = "DROP TABLE cadet_print"
         cur.execute(sql)
         con.commit()  
         print('table deleted')
@@ -43,7 +43,7 @@ def Insert_SQL_Table (x):
     '''
     #with con:
     cur = con.cursor()
-    sql = f"INSERT INTO cadet(name) VALUES ('{x}')"
+    sql = f"INSERT INTO cadet_print(name) VALUES ('{x}')"
     cur.execute(sql)
     con.commit()
 
@@ -91,14 +91,14 @@ def Sort_Cadet ():
     Функция выполняет сортировку в запросе по имени
     '''
     cur = con.cursor()
-    sql = "SELECT id, name FROM cadet ORDER BY name"
+    sql = "SELECT id, name FROM cadet_print ORDER BY name"
     cur.execute(sql)
     rows = cur.fetchall()
     for row in rows:
         print("{0} {1}".format(row[0], row[1]))
 
-#def Tranzit_Cadet (x):
-   
+
+
 
 
 
