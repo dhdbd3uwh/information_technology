@@ -5,14 +5,12 @@ Created on Tue Oct 19 12:43:18 2021
 @author: Andry
 """
 
-import openpyxl, time, sys, os
+import openpyxl, sys
 import xlwings as xw
-import xlwings.constants
-import pymysql
-#from progress.bar import IncrementalBar
 
-from variables import file_spisok_kadet, list_number, file_final, CADET_DATA2
-from variables import period_uval, vudacha, schet_name, con
+
+from variables import list_number, file_final, CADET_DATA2
+from variables import schet_name, con, period_uval
 
 #______________________________________________________________________________
 def Udalenie_Lishnih_Listov (value_uvol):
@@ -38,21 +36,11 @@ def Udalenie_Lishnih_Listov (value_uvol):
     value_list_for_delete = len(list_number) - value_list_for_print
     print("лишних листов на удаление: ", value_list_for_delete)
     
-    # #шкала процесса
-    # mylist1=[]
-    # for i in range(value_list_for_delete):
-    #     mylist1.append(i+1)
-    # #bar = IncrementalBar('Удаление лишних листов', max = len(mylist1))
-    
     for i in range(  value_list_for_print, (len(list_number))  ):
         linum = i  #номер листа для удаления
         excel_file = openpyxl.load_workbook(file_final) #открывает файл
         excel_file.remove(excel_file[list_number[linum]]) #удаляем лист
-        excel_file.save(file_final)   
-        #bar.next()
-        time.sleep(0.001)
-    #bar.finish()
-    del mylist1
+        excel_file.save(file_final)
 #______________________________________________________________________________        
 def Schet_Lidey ():
     '''
@@ -60,12 +48,6 @@ def Schet_Lidey ():
     шкалы состояния процесса работы программы
     '''
     global schet_name
-    # CADET_DATA2 = []
-    # excel_file = openpyxl.load_workbook(file_spisok_kadet) #открывает файл
-    # excel_list = excel_file['Sheet1']                   #выбирает лист файла
-    # for i in range(excel_list.max_row):  #заполнение списка
-    #     cell_obj = excel_list.cell(row=i+1, column=1)                 
-    #     CADET_DATA2.append(cell_obj.value)             #заполняем имена в список
     print('.')
     name_kadet = CADET_DATA2[schet_name]
     #bar.next()
@@ -78,12 +60,8 @@ def Setting_Variables ():
     '''
     Задание необходимых переменных, списков и ввод данных с консоли 
     '''
-    # print("Когда заканчивается увольнение? \nФормат ЧЧ-ММ ДД.ММ.ГГГГ \n(19-00 12.04.2021)")
-    # period_uval = input()
-    # print("Введите дату выдачи увольнительной записки \nФормат ДД месяц ГГГГ \n(10 сентября 2021)")
-    # vudacha = input()
-    er = period_uval
-    vg = vudacha
+    er = period_uval[1]
+    vg = period_uval[0]
     return er, vg
 
 #______________________________________________________________________________
@@ -105,7 +83,7 @@ def Data_Vudachi (case_write, vudacha, linum): #запись даты выдач
     excel_list[case_write] = vudacha            #перезапись ячейки
     excel_file.save(file_final)                     #сохранение изменений
 #______________________________________________________________________________    
-def Zanesenie_Dannuh (i, linum, name_kadet, period_uval, vudacha):
+def Zanesenie_Dannuh (i, linum, name_kadet, per_uval, vuda):
     '''
     Функция принимает значение номера ув.записки на странице для печати, 
     т.е. отвечает за изменение данных в ОДНОЙ ув.записке.
@@ -118,8 +96,8 @@ def Zanesenie_Dannuh (i, linum, name_kadet, period_uval, vudacha):
     case_dara = ghg[1][i]           #дата конца увольнения
     case_write = ghg[2][i]          #дата выдачи  
     Name_Uvolenogo(case_name, name_kadet, linum)
-    Data_Udolnenia(case_dara, period_uval, linum)
-    Data_Vudachi(case_write, vudacha, linum)
+    Data_Udolnenia(case_dara, per_uval, linum)
+    Data_Vudachi(case_write, vuda, linum)
 #______________________________________________________________________________    
 def Rabota_na_odnom_Liste (n, linum): #где n - кол-во эл-в на одной странице
     '''
@@ -155,7 +133,6 @@ def Rabota_nad_vsem_Failom (value_uvol):
             Rabota_na_odnom_Liste(b, a)
     elif value_uvol <= 10:
         Rabota_na_odnom_Liste(value_uvol, 0)
-    #bar.finish()
     #после занесения данных удаляем лишние листы
     Udalenie_Lishnih_Listov(value_uvol)
 #______________________________________________________________________________
@@ -179,15 +156,14 @@ def Print_File_Final (value_uvol):
 def BD_Cadet_Data ():
     with con: 
         cur = con.cursor()
-        cur.execute("SELECT * FROM cadet_print") #имя таблицы 
+        cur.execute("SELECT * FROM cadet_print ORDER BY name") #имя таблицы
         rows = cur.fetchall()
         for row in rows:#заполнение списка именами
-            CADET_DATA2.append(  row[1] + ' ' +  row[2]  ) #занесение столбцов с именами
+            # если фамилия и имя в одном столбце
+            CADET_DATA2.append(row[1])
 
-
-
-
-
-
-
-
+            # если фамилия и имя в разных столбцах
+            #CADET_DATA2.append(  str(row[0]) + ' ' +  str(row[1])  )
+        if len(CADET_DATA2) == 0:
+            print("нет данных")
+            sys.exit(0)
