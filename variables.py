@@ -13,8 +13,7 @@ list_number = ['1','2','3','4','5','6','7','8','9','10']
 CADET_DATA2 = []
 schet_name = 0
 
-period_uval = "T"
-vudacha = "T"
+period_uval = []
 
 
 con = pymysql.connect(host='localhost',
