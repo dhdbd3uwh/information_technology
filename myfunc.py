@@ -38,11 +38,11 @@ def Udalenie_Lishnih_Listov (value_uvol):
     value_list_for_delete = len(list_number) - value_list_for_print
     print("лишних листов на удаление: ", value_list_for_delete)
     
-    #шкала процесса
-    mylist1=[]
-    for i in range(value_list_for_delete):
-        mylist1.append(i+1)
-    #bar = IncrementalBar('Удаление лишних листов', max = len(mylist1))
+    # #шкала процесса
+    # mylist1=[]
+    # for i in range(value_list_for_delete):
+    #     mylist1.append(i+1)
+    # #bar = IncrementalBar('Удаление лишних листов', max = len(mylist1))
     
     for i in range(  value_list_for_print, (len(list_number))  ):
         linum = i  #номер листа для удаления
@@ -78,11 +78,13 @@ def Setting_Variables ():
     '''
     Задание необходимых переменных, списков и ввод данных с консоли 
     '''
-    print("Когда заканчивается увольнение? \nФормат ЧЧ-ММ ДД.ММ.ГГГГ \n(19-00 12.04.2021)")
-    period_uval = input()
-    print("Введите дату выдачи увольнительной записки \nФормат ДД месяц ГГГГ \n(10 сентября 2021)")
-    vudacha = input()
-    return period_uval, vudacha
+    # print("Когда заканчивается увольнение? \nФормат ЧЧ-ММ ДД.ММ.ГГГГ \n(19-00 12.04.2021)")
+    # period_uval = input()
+    # print("Введите дату выдачи увольнительной записки \nФормат ДД месяц ГГГГ \n(10 сентября 2021)")
+    # vudacha = input()
+    er = period_uval
+    vg = vudacha
+    return er, vg
 
 #______________________________________________________________________________
 def Name_Uvolenogo (case_name, name_kadet, linum):#запись имени увольняемного
