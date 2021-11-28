@@ -1,10 +1,10 @@
 from PyQt5 import QtWidgets, uic
-from variables import CADET_DATA2, period_uval
-from myfunc import Rabota_nad_vsem_Failom, Print_File_Final
+from variables import CADET_DATA2, CADET_DATA1, period_uval
+from myfunc import Rabota_nad_vsem_Failom, Print_File_Final, BD_Cadet_Data, Insert_SQL_Table,Insert_SQL_Table1,Delete_Odnogo_SQL_Table, Delete_Odnogo_SQL_Table1
 import sys
 
 
-def Print_Window():
+def Print_Window():  # окно для печати
     app = QtWidgets.QApplication([])
     dlg = uic.loadUi("dialog.ui")
 
@@ -12,6 +12,48 @@ def Print_Window():
     def Add_cadet_in_ListTable():  # Выводит в окно список (выполняет сортировку по имени)
         dlg.listWidget.addItems(CADET_DATA2)
         # listWidget.selectedItems() - то, что выделили \ takeItem(row) - удаление
+
+    def Tranz_cadet():  # переместить из табл в табл
+        indexcur = dlg.listWidget1.currentRow()
+        item = dlg.listWidget1.item(indexcur)
+        x = item.text()
+        if x is not None:
+            Insert_SQL_Table(x)
+            BD_Cadet_Data()
+            dlg.listWidget2.clear()
+            dlg.listWidget2.addItems(CADET_DATA2)
+
+    def Del_cadet():
+        indexcur = dlg.listWidget2.currentRow()
+        item = dlg.listWidget2.item(indexcur)
+        x = item.text()
+        if x is not None:
+            Delete_Odnogo_SQL_Table(x)
+            BD_Cadet_Data()
+            dlg.listWidget2.clear()
+            dlg.listWidget2.addItems(CADET_DATA2)
+
+    def Delete_cadet():
+        indexcur = dlg.listWidget1.currentRow()
+        item = dlg.listWidget1.item(indexcur)
+        x = item.text()
+        if x is not None:
+            Delete_Odnogo_SQL_Table1(x)
+            BD_Cadet_Data()
+            dlg.listWidget1.clear()
+            dlg.listWidget2.clear()
+            dlg.listWidget1.addItems(CADET_DATA1)
+            dlg.listWidget2.addItems(CADET_DATA2)
+
+    def Add_cadet():
+        x = dlg.lineEdit_addcadet.text()
+        if x is not None:
+            Insert_SQL_Table1(x)
+            BD_Cadet_Data()
+            dlg.listWidget1.clear()
+            dlg.listWidget2.clear()
+            dlg.listWidget1.addItems(CADET_DATA1)
+            dlg.listWidget2.addItems(CADET_DATA2)
 
 
     def Print_send_list():  # Отправляет на печать
@@ -36,34 +78,15 @@ def Print_Window():
             msb.setIcon(QtWidgets.QMessageBox.Warning)
             msb.exec_()
 
-    dlg.ButtonAdd.clicked.connect(Add_cadet_in_ListTable)
     dlg.ButtonPrint.clicked.connect(Print_send_list)
+    dlg.add_cadetprint_button.clicked.connect(Tranz_cadet)
+    dlg.del_cadetprint_button.clicked.connect(Del_cadet)
+    dlg.del_cadet_button.clicked.connect(Delete_cadet)
+    dlg.add_cadet_button.clicked.connect(Add_cadet)
+
+    dlg.listWidget1.addItems(CADET_DATA1)
+    dlg.listWidget2.addItems(CADET_DATA2)
     # -----------------------------
     dlg.show()
     app.exec()
 
-# Form, Window = uic.loadUiType("dialog.ui")
-# class Ui(QtWidgets.QDialog, Form):
-#     def __init__(self):
-#         super(Ui, self).__init__()
-#         self.setupUi(self)
-#         self.ButtonConsole.clicked.connect(self.printButtonPresed)
-#         self.ButtonList.clicked.connect(self.ListAdd)
-#
-#     def printButtonPresed(self):
-#         print("print")
-#
-#     def ListAdd (self):
-#         self.listWidget.addItem('test')
-#
-#
-# def main():
-#     import sys
-#     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication
-#     window = Ui()
-#     window.show()
-#     sys.exit(app.exec())  # и запускаем приложение
-#
-#
-# if __name__ == '__main__':  # Если мы запускаем файл напрямую, а не импортируем
-#     main()  # то запускаем функцию main()
