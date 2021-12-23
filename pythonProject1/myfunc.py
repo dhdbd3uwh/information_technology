@@ -240,3 +240,32 @@ def Clean_Table():
     con.commit()
 
 
+# ______________________________________________________________________________
+
+
+'''
+ФУНКЦИИ ПРОВЕРКИ ПАРОЛЯ   
+'''
+
+# ______________________________________________________________________________
+
+# def Password_enter(x):
+#     cur = con.cursor()
+#     sql = f"INSERT INTO pass_user(pass) VALUES ('{x}')"
+#     cur.execute(sql)
+#     con.commit()
+# def Login_enter(x):
+#     cur = con.cursor()
+#     sql = f"INSERT INTO pass_user(login) VALUES ('{x}')"
+#     cur.execute(sql)
+#     con.commit()
+# def Password_P(x):
+#     cur = con.cursor()
+#     cur.execute("SELECT * FROM pass_user ORDER BY pass")  # имя таблицы
+#     rows = cur.fetchall()
+#     if
+#     if rows[0] == x:
+#         return 1
+#     else:
+#         return 0
+

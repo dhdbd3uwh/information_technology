@@ -2,15 +2,12 @@
 <ui version="4.0">
  <class>Dialog</class>
  <widget class="QDialog" name="Dialog">
-  <property name="windowModality">
-   <enum>Qt::ApplicationModal</enum>
-  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1059</width>
-    <height>779</height>
+    <width>1056</width>
+    <height>736</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,8 +18,8 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>622</width>
-    <height>446</height>
+    <width>0</width>
+    <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -37,45 +34,56 @@
     <height>446</height>
    </size>
   </property>
-  <property name="font">
-   <font>
-    <pointsize>8</pointsize>
-   </font>
-  </property>
-  <property name="contextMenuPolicy">
-   <enum>Qt::NoContextMenu</enum>
-  </property>
   <property name="windowTitle">
    <string>Печать</string>
   </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>../../Downloads/ghjuf/icon.png</normaloff>../../Downloads/ghjuf/icon.png</iconset>
-  </property>
-  <property name="toolTipDuration">
-   <number>1</number>
-  </property>
-  <property name="autoFillBackground">
-   <bool>true</bool>
-  </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QDialog {
+background-color: black;
+}
+
+QPushButton {
+background-color:orange;
+}
+
+QPushButton:hover {
+background-color:#B44010;
+}
+
+QPushButton:pressed {
+background-color:red;
+}
+
+QLabel {
+background-color:orange;
+}
+
+QLineEdit {
+background-color:white;
+}
+</string>
   </property>
   <widget class="QListWidget" name="listWidget1">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>40</y>
-     <width>251</width>
+     <y>50</y>
+     <width>281</width>
      <height>511</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:10px solid rgb(169, 241, 255);
+text-alight:left;
+border-collapse: separate;
+border-radius: 15px</string>
    </property>
   </widget>
   <widget class="QPushButton" name="ButtonPrint">
    <property name="geometry">
     <rect>
-     <x>840</x>
-     <y>170</y>
+     <x>830</x>
+     <y>150</y>
      <width>161</width>
      <height>61</height>
     </rect>
@@ -97,10 +105,10 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>680</x>
+     <x>660</x>
      <y>20</y>
-     <width>341</width>
-     <height>41</height>
+     <width>381</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -116,12 +124,15 @@
    <property name="text">
     <string>Введите дату начала и конца уволнения </string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_start">
    <property name="geometry">
     <rect>
-     <x>830</x>
-     <y>70</y>
+     <x>810</x>
+     <y>60</y>
      <width>181</width>
      <height>31</height>
     </rect>
@@ -130,8 +141,8 @@
   <widget class="QLineEdit" name="lineEdit_end">
    <property name="geometry">
     <rect>
-     <x>830</x>
-     <y>120</y>
+     <x>810</x>
+     <y>100</y>
      <width>181</width>
      <height>31</height>
     </rect>
@@ -140,8 +151,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>800</x>
-     <y>70</y>
+     <x>780</x>
+     <y>60</y>
      <width>16</width>
      <height>31</height>
     </rect>
@@ -154,15 +165,23 @@
      <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:orange;
+border-collapse: separate;
+border-radius: 6px</string>
+   </property>
    <property name="text">
     <string>C</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>790</x>
-     <y>120</y>
+     <x>770</x>
+     <y>100</y>
      <width>31</width>
      <height>31</height>
     </rect>
@@ -174,27 +193,41 @@
      <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:orange;
+border-collapse: separate;
+border-radius: 6px</string>
+   </property>
    <property name="text">
     <string>ПО</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QListWidget" name="listWidget2">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>40</y>
-     <width>251</width>
+     <x>320</x>
+     <y>50</y>
+     <width>281</width>
      <height>511</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:10px solid rgb(169, 241, 255);
+text-alight:left;
+border-collapse: separate;
+border-radius: 15px</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>80</x>
      <y>10</y>
-     <width>251</width>
-     <height>21</height>
+     <width>141</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -212,10 +245,10 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>370</x>
      <y>10</y>
-     <width>251</width>
-     <height>21</height>
+     <width>191</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -233,8 +266,8 @@
   <widget class="QPushButton" name="add_cadetprint_button">
    <property name="geometry">
     <rect>
-     <x>830</x>
-     <y>330</y>
+     <x>770</x>
+     <y>280</y>
      <width>161</width>
      <height>71</height>
     </rect>
@@ -247,8 +280,8 @@
   <widget class="QPushButton" name="del_cadetprint_button">
    <property name="geometry">
     <rect>
-     <x>830</x>
-     <y>410</y>
+     <x>770</x>
+     <y>380</y>
      <width>161</width>
      <height>71</height>
     </rect>
@@ -261,8 +294,8 @@
   <widget class="QPushButton" name="del_cadet_button">
    <property name="geometry">
     <rect>
-     <x>830</x>
-     <y>490</y>
+     <x>770</x>
+     <y>480</y>
      <width>161</width>
      <height>71</height>
     </rect>
@@ -275,17 +308,17 @@
   <widget class="QLineEdit" name="lineEdit_addcadet">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>610</y>
+     <x>400</x>
+     <y>620</y>
      <width>341</width>
-     <height>51</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="add_cadet_button">
    <property name="geometry">
     <rect>
-     <x>830</x>
+     <x>760</x>
      <y>600</y>
      <width>161</width>
      <height>71</height>
@@ -299,9 +332,9 @@
   <widget class="QPushButton" name="clean_BD_button">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>707</y>
-     <width>211</width>
+     <x>30</x>
+     <y>610</y>
+     <width>141</width>
      <height>51</height>
     </rect>
    </property>
