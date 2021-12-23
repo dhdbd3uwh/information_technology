@@ -48,6 +48,10 @@
   <property name="windowTitle">
    <string>Печать</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../Downloads/ghjuf/icon.png</normaloff>../../Downloads/ghjuf/icon.png</iconset>
+  </property>
   <property name="toolTipDuration">
    <number>1</number>
   </property>
