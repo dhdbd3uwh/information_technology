@@ -1,13 +1,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
-from funcGUI import Print_Window
+from variables import password_access
 import sys, os
 import hashlib
 
 def zapusk():
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = uic.loadUi("dialogPass.ui")
-    
+    password_access[0] = 0
 
     def check(login,paswrld): #проверка логина и пароля, также в функции реализованы входы в другие формы
         try:
@@ -54,7 +54,7 @@ def zapusk():
             msg.exec_()
             
         elif(login==Ologin and paswrld==Opassworld):
-            
+            password_access[0] = 1
             MainWindow.close()
             
 
@@ -65,6 +65,7 @@ def zapusk():
             msg.setText("Неверно введенные данные, попробуйте еще раз")
             msg.setIcon(QMessageBox.Warning)
             msg.exec_()
+            password_access[0] = 0
             sys.exit()
 
     def hash_dan(dan): #функция хэширования
