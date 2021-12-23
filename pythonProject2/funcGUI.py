@@ -51,18 +51,28 @@ def Print_Window():  # окно для печати
         x = dlg.lineEdit_addcadet.text()
         print(len(x))
         if x is not None and not dlg.lineEdit_addcadet.text() == "" and x[0].isalpha() == True:
-            Insert_SQL_Table1(x)
-            BD_Cadet_Data()
-            dlg.listWidget1.clear()
-            dlg.listWidget2.clear()
-            dlg.listWidget1.addItems(CADET_DATA1)
-            dlg.listWidget2.addItems(CADET_DATA2)
+            if x.istitle() == True: # каждое слово с заглавной
+                Insert_SQL_Table1(x)
+                BD_Cadet_Data()
+                dlg.listWidget1.clear()
+                dlg.listWidget2.clear()
+                dlg.listWidget1.addItems(CADET_DATA1)
+                dlg.listWidget2.addItems(CADET_DATA2)
+            else:
+                msb = QtWidgets.QMessageBox()
+                msb.setWindowTitle("Ошибка")
+                msb.setText("Имя и фамилия должны начинаться с заглавной буквы !!!")
+                msb.setIcon(QtWidgets.QMessageBox.Warning)
+                msb.exec_()
+
         else:
             msb = QtWidgets.QMessageBox()
             msb.setWindowTitle("Ошибка")
             msb.setText("Введите имя !!!")
             msb.setIcon(QtWidgets.QMessageBox.Warning)
             msb.exec_()
+
+
     #------------------------------------
 
     def Print_send_list():  # Отправляет на печать
