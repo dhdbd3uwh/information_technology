@@ -15,6 +15,7 @@ schet_name = 0
 
 period_uval = []
 
+password_access = [0, 2]
 
 con = pymysql.connect(host='localhost',
         user='root',
